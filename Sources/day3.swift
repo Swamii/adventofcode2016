@@ -13,7 +13,7 @@ struct Day3 {
         return true
     }
 
-    public static func run(input: String) {
+    static func run(input: String) {
         var possible = 0
         var columns = [[Int]](repeating: [Int](), count: 3)
 

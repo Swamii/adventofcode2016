@@ -69,7 +69,7 @@ struct Day4 {
         }
     }
 
-    public static func run(input: String) {
+    static func run(input: String) {
         let regex = Regex(pattern: "([a-z\\-]+)-(\\d+)\\[([a-z]{5})\\]")
 
         var rooms = [Room]()

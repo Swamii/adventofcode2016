@@ -1,7 +1,7 @@
 import CryptoSwift
 
 struct Day5 {
-    public static func run(input: String) {
+    static func run(input: String) {
         var keyCode = ""
         var keyCode2 = [String](repeating: "", count: 8)
         var nextSequence = input
