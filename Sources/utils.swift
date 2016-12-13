@@ -22,6 +22,11 @@ enum Direction: Character {
     case left = "L"
 }
 
+struct Size {
+    let width: Int
+    let height: Int
+}
+
 
 /// Regex wrapper
 /// from NSHipster - http://nshipster.com/swift-literal-convertible/
@@ -62,4 +67,14 @@ struct Regex {
         
         return groups
     }
+}
+
+func *(lhs: String, rhs: Int) -> String {
+    var strings = [String]()
+
+    for _ in 0..<rhs {
+        strings.append(lhs)
+    }
+
+    return strings.joined()
 }
