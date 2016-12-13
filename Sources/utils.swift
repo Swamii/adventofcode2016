@@ -55,7 +55,6 @@ struct Regex {
         let matches = matcher.matches(in: input,
                                       options: options,
                                       range: NSRange(location: 0, length: input.utf16.count))
-
         var groups = [String]()
         for match in matches as [NSTextCheckingResult] {
             // range at index 0: full match, skip that and add all groups to list
@@ -67,6 +66,17 @@ struct Regex {
         
         return groups
     }
+
+    func firstMatch(input: String,
+                    options: NSRegularExpression.MatchingOptions = NSRegularExpression.MatchingOptions()) -> NSTextCheckingResult? {
+        let match = matcher.firstMatch(
+            in: input,
+            options: options,
+            range: NSRange(location: 0, length: input.utf16.count)
+        )
+
+        return match
+    }
 }
 
 func *(lhs: String, rhs: Int) -> String {
@@ -77,4 +87,23 @@ func *(lhs: String, rhs: Int) -> String {
     }
 
     return strings.joined()
+}
+
+extension String {
+    mutating func popTo(length: Int) -> String {
+        let range = self.startIndex..<self.index(self.startIndex, offsetBy: length)
+        let chars = self[range]
+        removeSubrange(range)
+        return chars
+    }
+
+    subscript(i: Int) -> String {
+        return String(self[self.index(self.startIndex, offsetBy: i)])
+    }
+
+    subscript(range: Range<Int>) -> String {
+        let startIndex = self.index(self.startIndex, offsetBy: range.lowerBound)
+        let endIndex = self.index(self.startIndex, offsetBy: range.upperBound, limitedBy: self.endIndex) ?? self.endIndex
+        return self[startIndex..<endIndex]
+    }
 }

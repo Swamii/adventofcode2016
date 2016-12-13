@@ -112,8 +112,9 @@ struct Day8 {
             // print(Display.shared, "\n")
         }
 
+        print("Number of pixels lit: \(Display.shared.tokensLit)")
+
         print("\nHidden code:")
         print(Display.shared, "\n")
-        print("Number of pixels lit: \(Display.shared.tokensLit)")
     }
 }

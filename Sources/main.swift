@@ -9,7 +9,8 @@ let dayMapping: [String: (String) -> Void] = [
     "day5": Day5.run,
     "day6": Day6.run,
     "day7": Day7.run,
-    "day8": Day8.run
+    "day8": Day8.run,
+    "day9": Day9.run
 ]
 
 func main() {
